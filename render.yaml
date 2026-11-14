@@ -1,0 +1,21 @@
+# Free Render deploy for binary-upload-boom.
+# In Render: New > Web Service > pick KinzaRehman/binary-upload-boom,
+# or use this Blueprint. Then set the env vars below in Render.
+# You still need a free MongoDB Atlas cluster (DB_STRING)
+# and a free Cloudinary account (CLOUD_NAME, API_KEY, API_SECRET).
+services:
+  - type: web
+    name: binary-upload-boom
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: DB_STRING
+        sync: false
+      - key: CLOUD_NAME
+        sync: false
+      - key: API_KEY
+        sync: false
+      - key: API_SECRET
+        sync: false
